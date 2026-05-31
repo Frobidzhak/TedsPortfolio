@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'OldEnglish'; /* Name your font family */
+    src: url('OldeEnglishRegular-Zd2J.ttf'); /*fon Locate the .ttf file within your directory*/
+  }
+h1{
+			font-family: 'OldEnglish', sans-serif;
+			font-size:70px;
+		}
+label{
+	font-size:30px;
+}
+input{
+	height: 20px;	
+}
+body {
+			background-color: #000000;
+			color: #ffffff;
+			
+            margin: 
+            padding: 
+            display: 
+            justify-content: 
+            align-items: 
+            height: 
+            background-color: 
+			
+			
+      }
+		

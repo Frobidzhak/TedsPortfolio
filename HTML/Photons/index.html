@@ -1,0 +1,487 @@
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <title>Photons</title>
+ <style>
+ 
+ canvas{
+ border:4px solid black;
+ display: block;
+ margin: 0 auto;
+ }
+ 
+ </style>
+ <link rel="stylesheet" href="style.css">
+ <script language="javascript">
+
+ var onOff = 0 * 1;	
+ var onOffBullet = 0 * 1;	
+ var enemyLives = 3;	
+ var dir = 3	;
+ var dirDifx = 0;	
+ var dirDify = 0;	
+ var loss = 0;
+ var time = 0;
+ var enemyTimer = 0;
+ var score = 0;
+ var php = 5;
+ var dmg = 1;
+ var Fscore = 0;
+ var Bscore = 0;
+ var Aliens = new Array();
+ var Bullets = new Array();
+ var BulletVar = 1;
+ 
+ let dmgpku= {
+ x: -50,
+ y: -50,
+ radius: 20
+ };
+ 
+ function SpawnDmg(){
+ ranX = Math.floor(Math.random() * (600 - 200 + 1)) + 200;
+ ranY = Math.floor(Math.random() * (600 - 200 + 1)) + 200;
+ dmgpku.x = ranX
+ dmgpku.y = ranY
+ }
+ 
+ let hppku= {
+ x: -50,
+ y: -50,
+ radius: 20
+ };
+ 
+ function SpawnHp(){
+ randX = Math.floor(Math.random() * (600 - 200 + 1)) + 200;
+ randY = Math.floor(Math.random() * (600 - 200 + 1)) + 200;
+ hppku.x = randX
+ hppku.y = randY
+ }
+ 
+ let enemy= {
+ x: 30,
+ y: 30,
+ radius: 30,
+ speed: 2
+
+ };
+ let circle= { 
+ x: 400	,
+ y: 400,
+ radius: 30,
+ xspeed: 0,
+ yspeed: 0
+
+ };
+function AliensInfo(x,y,velx,vely,size,hp)
+ {
+ this.x = x;
+ this.y = y;
+ this.velx = velx;
+ this.vely = vely;
+ this.size = size;
+ this.hp = hp;
+ }
+function BulletsInfo(x,y,velx,vely)
+ {
+ this.x = x;
+ this.y =y;
+ this.velx = velx;
+ this.vely = vely;
+ }
+ 
+function SpawnAlien(){
+ let xcoord = Math.random() < 0.5
+  ? Math.floor(Math.random() * 50) - 50
+  : Math.floor(Math.random() * 50) + 801;
+ let ycoord = Math.random() < 0.5
+  ? Math.floor(Math.random() * 50) - 50
+  : Math.floor(Math.random() * 50) + 801;
+ var rs = Math.floor(Math.random()*2)*1;
+ if(rs == 0){rs = -1};
+ Aliens[Aliens.length] = new AliensInfo(xcoord,ycoord,rs,0,15,3);
+ }
+ 
+window.addEventListener('keyup',handleKeyUp);
+ window.addEventListener('keydown',handleKeyPress);
+ function handleKeyUp(e){
+ if(event.key === "ArrowLeft" || event.key === "a")
+	 {
+	 circle.xspeed = 0;
+	 }
+	
+	 if(event.key === "ArrowRight" || event.key === "d")
+	 {
+	 circle.xspeed = 0;
+	 }
+	 if(event.key === "ArrowDown" || event.key === "s")
+	 {
+	 
+	 circle.yspeed = 0;
+	 }
+	 if(event.key === "ArrowUp" || event.key === "w")
+	 {
+	 
+	 circle.yspeed = 0;
+	 }
+ }
+ function handleKeyPress(e){
+
+	 if(event.key === "ArrowLeft" || event.key === "a")
+	 {
+	 if(onOffBullet == false){
+	
+	 circle.xspeed = -10;
+	 dirDifx = -20;
+	 dir = 1;
+		}
+	 }
+	
+	 if(event.key === "ArrowRight" || event.key === "d")
+	 {
+	 circle.xspeed = 10;
+	 if(onOffBullet == false){
+	 
+	 circle.xspeed = 10;
+	 dirDifx = -60;
+	 dir = 3;
+	  }
+	 
+	 }
+	 
+	 if(event.key === "ArrowDown" || event.key === "s")
+	 {
+	 circle.yspeed = 10;
+	 if(onOffBullet == false){
+	 
+	 dirDify = 0;	
+	 }
+	 }
+	 if(event.key === "ArrowUp" || event.key === "w")
+	 {
+	  circle.yspeed = -10;
+	  //shoot();
+	 if(onOffBullet == false){
+	 
+	 dirDify = 0;	
+		}
+	 }
+	 
+	 if(event.key === " ")
+	 {
+		shoot();
+	 }
+	 
+	 
+	
+	 drawCircle();
+	  
+
+ }
+ function shoot(){
+	if(BulletVar == 1){ 
+		Bullets[Bullets.length] = new BulletsInfo(circle.x,circle.y,-5,-5,15);
+		BulletVar = 2;
+	} else if (BulletVar == 2){
+		Bullets[Bullets.length] = new BulletsInfo(circle.x,circle.y,5,-5,15);
+		BulletVar = 3;
+	} else if (BulletVar == 3){
+		Bullets[Bullets.length] = new BulletsInfo(circle.x,circle.y,5,5,15);
+		BulletVar = 4;
+	} else if (BulletVar == 4){
+		Bullets[Bullets.length] = new BulletsInfo(circle.x,circle.y,-5,5,15);
+		BulletVar = 1;
+	} 
+	
+ }
+
+ //calls init first to set things up
+ function init()
+ {
+ drawCircle();
+ }
+ function drawCircle()
+ {
+ //define canvas
+ var canvas = document.getElementById("gameCanvas");
+ var ctx = canvas.getContext("2d");
+
+ //paint background color
+ ctx.fillStyle="#000000";
+ ctx.fillRect(0,0,800,800);
+ 
+ ctx.strokeStyle = "magenta"; // outline color
+ ctx.lineWidth = 2;  
+ ctx.beginPath();
+ 
+ ctx.moveTo(200,200);
+ ctx.lineTo(600,200);
+ ctx.lineTo(600,600);
+ ctx.lineTo(200,600);
+ ctx.lineTo(200,200);
+ ctx.moveTo(200,200);
+ 
+ ctx.stroke();
+ //ctx.fill();
+ ctx.closePath();
+ ctx.fillStyle="red";
+ ctx.strokeStyle = "red";
+ 
+if(dir == 1 || dir == 3){
+ ctx.beginPath();
+ ctx.rect(circle.x-50,circle.y-30,100,60)
+ ctx.fillStyle="darkblue";
+ ctx.fill();
+ ctx.beginPath();
+ 
+ //ctx.rect(circle.x+dirDifx,circle.y-10,90,20)
+ 
+ ctx.fillStyle="darkblue";
+ ctx.fill();
+ }else{
+ ctx.beginPath();
+ ctx.rect(circle.x-40,circle.y-75,80,150)
+ ctx.fillStyle="darkgreen";
+ ctx.fill();
+ ctx.beginPath();
+ ctx.arc(circle.x,circle.y,circle.radius,0,Math.PI*2);
+ ctx.rect(circle.x-10,circle.y+dirDify,20,90)
+ 
+ ctx.fillStyle="green";
+ ctx.fill();
+ }
+ ctx.fillStyle="orange";
+ ctx.beginPath();
+ 
+ ctx.arc(dmgpku.x,dmgpku.y,dmgpku.radius,0,Math.PI*2,true);
+ ctx.closePath();
+ ctx.fillStyle="orange";
+ ctx.fill();
+ 
+ ctx.fillStyle="green";
+ ctx.beginPath();
+ 
+ ctx.arc(hppku.x,hppku.y,hppku.radius,0,Math.PI*2,true);
+ ctx.closePath();
+ ctx.fillStyle="green";
+ ctx.fill();
+ for(var k=0; k< Aliens.length; k++)
+ {
+ ctx.fillStyle="red";
+ ctx.beginPath();
+ 
+ ctx.arc(Aliens[k].x,Aliens[k].y,Aliens[k].size,0,Math.PI*2,true);
+ ctx.closePath();
+ ctx.fillStyle="red";
+ ctx.fill();
+ }
+ for(var k=0; k < Bullets.length; k++)
+ {
+ ctx.fillStyle="yellow";
+ ctx.beginPath();
+ 
+ ctx.arc(Bullets[k].x,Bullets[k].y,5,0,Math.PI*2,true);
+ ctx.closePath();
+ ctx.fillStyle="yellow";
+ ctx.fill();
+ }
+ 
+ 
+
+ 
+
+	 ctx.font = "30px Arial";
+	 ctx.fillStyle = "blue";
+	 ctx.fillText("Score: "+score, 20, 30);
+	 ctx.fillText("High Score: "+Bscore, 20, 60);
+	 ctx.fillText("Health: "+php, 20, 90);
+	 
+	if(php <= 0){
+	 ctx.font = "30px Arial";
+	 ctx.fillStyle = "red";
+	 ctx.fillText("Game Over", 400, 400);
+	}
+ 
+ 
+ }
+	
+ function Timer()
+ {
+	 if(onOff == false)
+	 {
+	 timer = setInterval("Move()",100);
+	 dmgtimer = setInterval("SpawnDmg()",5000);
+	 hptimer = setInterval("SpawnHp()",6000);
+	 secTimer = setInterval("EMove()",3000);
+	 TimeTimer = setInterval("Time()",2000);
+	 riseTimer = setInterval("RTime()",30);
+	 
+	 onOff = 1*1;
+	 }
+	 else if(onOff == true)
+	  {
+	 clearInterval(timer);
+	 onOff = 0 * 1;
+	 }
+ }
+ function Time(){
+	SpawnAlien();
+	if(time > -1){
+	time += 1;
+	Fscore = score
+	}else{
+	if(Fscore > Bscore){
+	Bscore = Fscore;
+	}
+	timer = 0;
+	secTimer = 0;
+	TimeTimer = 0;
+	}
+ }
+function EMove(){
+ 
+	enemy.x = Math.floor(Math.random()*800)*1;
+	enemy.y = Math.floor(Math.random()*800)*1;
+ }
+  function RTime(){;
+   if(circle.x > 590)
+	{
+		circle.x -= 10;
+		
+	}
+	if(circle.x < 210)
+	{
+		circle.x += 10;
+		
+	}
+	 if(circle.y > 590)
+	{
+		circle.y -= 10;
+		
+	}
+	if(circle.y < 210)
+	{
+		circle.y += 10;
+		
+	}
+	
+ }
+  function Reset(){
+  Timer();
+  if (score > Bscore){Bscore = score}
+  score = 0;
+  time = 0;
+  php = 5;
+  enemyTimer = 0;
+  Aliens = [];
+  Bullets = [];
+  }
+  function GameOver(){
+	var canvas = document.getElementById("gameCanvas");
+	var ctx = canvas.getContext("2d");
+	ctx.font = "30px Arial";
+	 ctx.fillStyle = "red";
+	 ctx.fillText("you lose", 200, 200);
+	Timer();
+	
+	
+  }
+ function Move(){
+	circle.x += circle.xspeed	
+	circle.y += circle.yspeed;
+	window.addEventListener('keydown',handleKeyPress);
+	for(var m=0;m<Aliens.length;m++)
+	{
+	
+	if(Aliens[m].x<circle.x){
+	Aliens[m].x += 5;
+	}else if (Aliens[m].x>circle.x){
+	Aliens[m].x -= 5;
+	}
+	
+	if(Aliens[m].y<circle.y){
+	Aliens[m].y += 5;
+	}else if (Aliens[m].y>circle.y){
+	Aliens[m].y -= 5;
+	}
+	
+	Aliens[m].size += 0.5;
+	
+	if(
+	circle.x >= (Aliens[m].x-80) &&
+	circle.x <= (Aliens[m].x+80) &&
+	circle.y >= (Aliens[m].y-80) &&
+	circle.y <= (Aliens[m].y+80)){
+		Aliens.splice(m, 1);
+		php--;
+		if(php <= 0){GameOver();}
+	}
+	
+	if(
+	circle.x >= (hppku.x-80) &&
+	circle.x <= (hppku.x+80) &&
+	circle.y >= (hppku.y-80) &&
+	circle.y <= (hppku.y+80)){
+		hppku.x = -50;
+		hppku.y = -50;
+		php++;
+
+	}
+	
+	if(
+	circle.x >= (dmgpku.x-80) &&
+	circle.x <= (dmgpku.x+80) &&
+	circle.y >= (dmgpku.y-80) &&
+	circle.y <= (dmgpku.y+80)){
+		dmgpku.x = -50;
+		dmgpku.y = -50;
+		dmg++;
+
+	}
+	
+	for(var g=0;g<Bullets.length;g++)
+	{
+	if(
+	Bullets[g].x >= (Aliens[m].x-80) &&
+	Bullets[g].x <= (Aliens[m].x+80) &&
+	Bullets[g].y >= (Aliens[m].y-80) &&
+	Bullets[g].y <= (Aliens[m].y+80)){
+		Aliens[m].hp = Aliens[m].hp - dmg;
+		Bullets.splice(g, 1);
+		if (Aliens[m].hp <= 0){
+		Aliens.splice(m, 1);
+		score++;
+		}
+	}
+	}
+	
+	}
+	
+	for(var s=0;s<Bullets.length;s++)
+	{
+		Bullets[s].x += Bullets[s].velx;
+		Bullets[s].y += Bullets[s].vely;
+	}
+	
+	drawCircle();
+ } 
+ </script>
+
+ </head>
+ <body onload="init()">
+ 
+
+ <center>
+ <h1>Photons</h1>
+ <canvas id="gameCanvas" width="800" height="800" style="border:2px solid rgb(195,195,195);">
+ Doesn't support canvas attribute
+ </canvas>
+ <input type="button" name="Play" value="Start"
+ onclick="Timer()"/>
+ <input type="button" name="Restart" value="Restart"
+ onclick="Reset()"/>
+ </center>
+ </body>
+ </html>
