@@ -110,10 +110,20 @@ footer{
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #000000;
+    background-color: #ffffff;
     overflow-x: hidden;
     padding-top: 20px;
-    
+    color: #ffffff; 
+    background-image: url('images/sand.webp');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #0b0b1a; 
+    color: #ffffff;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
     
 
     
