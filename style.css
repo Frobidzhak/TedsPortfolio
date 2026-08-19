@@ -17,7 +17,18 @@ html{
     font-size:14px;
     font-family: 'Times New Roman', serif;
     background-color: #000000;
+    color: #ffffff; 
+    background-image: url('images/water.webp');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #0b0b1a; 
     color: #ffffff;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+
 }
 
 a{
