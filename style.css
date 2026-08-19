@@ -84,17 +84,39 @@ footer{
     margin: 4px;
     font-family: 'OldEnglish', sans-serif;
     color: #ffffff; 
+    background-image: url('images/doggy.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #0b0b1a; 
+    color: #ffffff;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    
     
 }
 .subforum-row{
     display: grid;
     grid-template-columns: 40% 60%;
     color: #ffffff; 
+    background-image: url('images/doggy.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #0b0b1a; 
+    color: #ffffff;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px; 
     
 }
 .forum-row{
     display: grid;
     grid-template-columns: 25% 50% 25%;
+    
 }
 .subforum-column{
     padding: 10px;
@@ -102,6 +124,16 @@ footer{
     border-radius: 5px;
     background-color: #123134;
     color: #ffffff; 
+    background-image: url('images/doggy.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #0b0b1a; 
+    color: #ffffff;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
     
 }
 .subforum-icon img{
