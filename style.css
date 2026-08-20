@@ -76,11 +76,11 @@ footer{
     margin: 4px;
     font-family: 'OldEnglish', sans-serif;
     /* From https://css.glass */
-background: rgba(255, 142, 0, 0.24);
+background: rgba(255, 142, 0, 0.09);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(11.7px);
--webkit-backdrop-filter: blur(11.7px);
+backdrop-filter: blur(7.1px);
+-webkit-backdrop-filter: blur(7.1px);
 border: 1px solid rgba(255, 142, 0, 1);
     
     
@@ -89,11 +89,11 @@ border: 1px solid rgba(255, 142, 0, 1);
     display: grid;
     grid-template-columns: 40% 60%;
     /* From https://css.glass */
-background: rgba(255, 142, 0, 0.24);
+background: rgba(255, 142, 0, 0.09);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(11.7px);
--webkit-backdrop-filter: blur(11.7px);
+backdrop-filter: blur(7.1px);
+-webkit-backdrop-filter: blur(7.1px);
 border: 1px solid rgba(255, 142, 0, 1);
     
 }
@@ -108,11 +108,11 @@ border: 1px solid rgba(255, 142, 0, 1);
     border-radius: 5px;
     background-color: #ffffff;
     /* From https://css.glass */
-background: rgba(255, 142, 0, 0.24);
+background: rgba(255, 142, 0, 0.09);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(11.7px);
--webkit-backdrop-filter: blur(11.7px);
+backdrop-filter: blur(7.1px);
+-webkit-backdrop-filter: blur(7.1px);
 border: 1px solid rgba(255, 142, 0, 1);
     
 }
