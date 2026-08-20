@@ -12,6 +12,11 @@
     font-family: 'OldEnglishCool'; /* Name your font family */
     src: url('fonts/OldeEnglishRegular-Zd2J.ttf'); /*fon Locate the .ttf file within your directory*/
   }
+@font-face {
+    font-family: 'Waterfont'; /* Name your font family */
+    src: url('fonts/WaterPark-6L2M.ttf'); /*fon Locate the .ttf file within your directory*/
+  }
+
 
 html{
     font-size:14px;
@@ -59,7 +64,7 @@ footer{
 }
 .brand{
     font-size: 50px;
-    font-family: 'OldEnglish', sans-serif;
+    font-family: 'Waterfont', sans-serif;
     color: #00ffd5;
 }
 .subforum{
@@ -74,7 +79,7 @@ footer{
     padding: 0.1px;
     border-radius: 3px;
     margin: 4px;
-    font-family: 'OldEnglish', sans-serif;
+    font-family: 'Waterfont', sans-serif;
     /* From https://css.glass */
 background: rgba(255, 255, 255, 0.09);
 border-radius: 16px;
