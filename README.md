@@ -1,2 +1,2 @@
 # Site
-link to site https://du0o.github.io/TedsPortfolio/
+link to site https://frobidzhak.github.io/TedsPortfolio/index.html
