@@ -16,6 +16,10 @@
     font-family: 'Waterfont'; /* Name your font family */
     src: url('fonts/WaterPark-6L2M.ttf'); /*fon Locate the .ttf file within your directory*/
   }
+@font-face {
+    font-family: 'AudioNugget'; /* Name your font family */
+    src: url('fonts/AudioNugget.ttf'); /*fon Locate the .ttf file within your directory*/
+  }
 
 
 html{
@@ -64,8 +68,8 @@ footer{
 }
 .brand{
     font-size: 50px;
-    font-family: 'Waterfont', sans-serif;
-    color: #00ffd5;
+    font-family: 'AudioNugget', sans-serif;
+    color: #FFAA00;
 }
 .subforum{
     margin-top: 20px;
@@ -74,12 +78,12 @@ footer{
 }
 
 .subforum-title{
-    color: #ffffff;
+    color: #FFAA00;
     background-color: #ffffff;
     padding: 0.1px;
     border-radius: 3px;
     margin: 4px;
-    font-family: 'Waterfont', sans-serif;
+    font-family: 'AudioNugget', sans-serif;
     /* From https://css.glass */
 background: rgba(255, 255, 255, 0.09);
 border-radius: 16px;
